@@ -21,7 +21,8 @@ import java.util.concurrent.atomic.AtomicLong;
  */
 @Repository
 public class UserRepositoryImol implements UserRepository {
-    private static AtomicLong counter = new AtomicLong();//计数器
+    //计数器，每次增加一个用户计数器就往上递增一个，用户就会拥有一个唯一的ID
+    private static AtomicLong counter = new AtomicLong();
     private final ConcurrentMap<Long,User> userMap = new ConcurrentHashMap<>();
 
     @Override

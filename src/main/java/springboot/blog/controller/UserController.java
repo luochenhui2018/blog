@@ -3,10 +3,7 @@ package springboot.blog.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import springboot.blog.domain.User;
 import springboot.blog.repository.UserRepository;
@@ -61,6 +58,16 @@ public class UserController {
         return new ModelAndView("users/form","userModel",model);
     }
 
+    /**
+     * 新增，修改用户
+     * @param user
+     * @return
+     */
+    @PostMapping
+    public ModelAndView saveOrUpdateUser(User user){
+        user = userRepository.saveOrUpdateUser(user);
+        return new ModelAndView("users/list","userModel",user);
+    }
 
 
 }
