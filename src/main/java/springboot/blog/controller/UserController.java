@@ -39,7 +39,7 @@ public class UserController {
      * @return
      */
     @GetMapping("{id}")
-    public ModelAndView view(@PathVariable("id") long id,Model model){
+    public ModelAndView view(@PathVariable("id") Long id,Model model){
         User user = userRepository.getUserById(id);
         model.addAttribute("user",user);
         model.addAttribute("title","查看用户");
@@ -59,17 +59,6 @@ public class UserController {
 
     }
 
-//    /**
-//     * 新增，修改用户
-//     * @param user
-//     * @return
-//     */
-//    @PostMapping
-//    public ModelAndView saveOrUpdateUser(User user){
-//        user = userRepository.saveOrUpdateUser(user);
-//        return new ModelAndView("users/list","userModel",user);
-//    }
-
     /**
      * 新增，修改用户
      * @param user
@@ -77,9 +66,20 @@ public class UserController {
      */
     @PostMapping
     public String saveOrUpdateUser(User user){
-        user = userRepository.saveOrUpdateUser(user);
-        return "redirect:users/";//redirect/forward
+        userRepository.saveOrUpdateUser(user);
+        return "redirect:/users";//redirect/forward
     }
 
+    /**
+     * 删除用户
+     * @param id
+     * @return
+     */
+    @GetMapping("/delete/{id}")
+    public String delete(@PathVariable("id") Long id){
+        userRepository.deleteUser(id);
+        return "redirect:/users";//重定向到list页面
+
+    }
 
 }
