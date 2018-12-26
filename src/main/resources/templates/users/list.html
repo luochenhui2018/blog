@@ -1,13 +1,17 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
-      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+      xmlns:layout="http://www.ultrag.net.nz/thymeleaf/layout"
+>
 <head>
     <meta charset="UTF-8">
     <title>Thymeleaf in action</title>
 </head>
 <body>
 <div th:replace="~{fragments/header :: header}"></div>
-<h3 th:text="${userModel.title}"></h3>
+<h3 th:text="${title}">lll</h3>
+<div>
+    <a href="/users/form.html" data-th-href="@{/users/form}">创建用户</a>
+</div>
 <table border="1">
     <thead>
     <tr>
@@ -17,13 +21,13 @@
     </tr>
     </thead>
     <tobody>
-        <tr th:if="${userModel.userList.size()} eq 0">
+        <tr th:if="${userList eq null}">
             <td colspan="3">没有用户信息!</td>
         </tr>
-        <tr th:each="user : ${userModel.userList}">
-            <td th:text="$(user.id)"></td>
-            <td th:text="$(user.email)"></td>
-            <td th:text="$(user.name)"></td>
+        <tr th:each="user : ${userList}">
+            <td th:text="${user.id}"></td>
+            <td th:text="${user.email}"></td>
+            <td th:text="${user.name}"></td>
         </tr>
     </tobody>
 </table>
