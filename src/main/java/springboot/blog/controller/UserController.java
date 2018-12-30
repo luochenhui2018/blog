@@ -60,7 +60,7 @@ public class UserController {
     }
 
     /**
-     * 新增，修改用户
+     * 新增用户
      * @param user
      * @return
      */
@@ -69,6 +69,24 @@ public class UserController {
         userRepository.saveOrUpdateUser(user);
         return "redirect:/users";//redirect/forward
     }
+
+
+    /**
+     * 获取用户用户的界面
+     * @param id
+     * @param model
+     * @return
+     */
+    @GetMapping("/modify/{id}")
+    public ModelAndView modify(@PathVariable("id") Long id,Model model){
+        User user = userRepository.getUserById(id);
+        model.addAttribute("user",user);
+        model.addAttribute("title","修改用户");
+        return new ModelAndView("users/form","userModel",model );
+
+    }
+
+
 
     /**
      * 删除用户
