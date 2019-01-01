@@ -14,7 +14,7 @@ import javax.persistence.Id;
  */
 @Data
 @Entity //@Entity 进行实体改造，标识User是个实体
-public class User {
+public class User{
     @Id //标示为一个主键
     @GeneratedValue(strategy = GenerationType.IDENTITY) //自增策略
     private Long id; //实体一个唯一标识
