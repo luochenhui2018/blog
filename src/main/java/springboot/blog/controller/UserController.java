@@ -2,11 +2,13 @@ package springboot.blog.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import springboot.blog.domain.User;
 import springboot.blog.repository.UserRepository;
+
 
 /**
  * User 控制器
@@ -18,6 +20,8 @@ import springboot.blog.repository.UserRepository;
 public class UserController {
     @Autowired
     private UserRepository userRepository;
+
+
 
     /**
      * 查询所有用户

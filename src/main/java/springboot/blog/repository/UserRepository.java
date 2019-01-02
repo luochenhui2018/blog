@@ -10,6 +10,7 @@ import java.util.List;
  * @author kuangfeng
  * @date 2018-12-16 01:57
  */
+
 public interface UserRepository extends CrudRepository<User,Long> {
 //    //创建或修改用户接口
 //    User saveOrUpdateUser(User user);
